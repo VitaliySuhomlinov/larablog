@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\View\Composers\PathToAssetsAdmin;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,8 +22,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        
-        View::composer('admin.*', PathToAssetsAdmin::class);
+        Paginator::useBootstrapFive();
+
+        View::composer('admin/*', PathToAssetsAdmin::class);
         /**
          * 1. шарить данные
          * //$path_to_img = asset('assets/admin/img/');

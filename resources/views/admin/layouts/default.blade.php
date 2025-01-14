@@ -1,11 +1,10 @@
 
-
 <!DOCTYPE html>
 <html lang="en"> <!--begin::Head-->
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>AdminLTE v4 | Dashboard</title>
+    <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="AdminLTE v4 | Dashboard">
     <meta name="author" content="ColorlibHQ">
@@ -116,9 +115,14 @@
             <div class="sidebar-wrapper">
                 <nav class="mt-2"> <!--begin::Sidebar Menu-->
                     <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+
                         <li class="nav-item"> <a href="{{ route('admin.main.index') }}" class="nav-link"> <i class="nav-icon bi bi-speedometer"></i>
                                 <p>Dashboard</p>
                             </a> </li>
+
+                        <li class="nav-item"> <a href="{{ route('admin.categories.index') }}" class="nav-link"> <i class="nav-icon bi bi-speedometer"></i>
+                            <p>Categories</p>
+                        </a> </li>
                     </ul> <!--end::Sidebar Menu-->
                 </nav>
             </div> <!--end::Sidebar Wrapper-->
