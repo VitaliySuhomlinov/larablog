@@ -22,7 +22,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -30,7 +30,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate(
+            [
+            'title'     => ['required', 'max:255'],
+            'meta_desc' => ['max:255']
+            ]
+        );
+        Category::query()->create($validated);
+        return redirect()->route('admin.categories.index')->with('success', 'Category added successfully');
     }
 
     /**
@@ -46,7 +53,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::query()->findOrFail($id);
+        return view('admin.category.edit', ['category' => $category]);
     }
 
     /**
@@ -54,7 +62,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::query()->findOrFail($id);//check of exist
+        $validated = $request->validate(
+            [
+            'title'     => ['required', 'max:255'],
+            'meta_desc' => ['max:255']
+            ]
+        );
+        $category->update($validated);
+        return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully');
     }
 
     /**
@@ -62,6 +78,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::query()->findOrFail($id);
+        $category->delete();
+        return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully');
     }
 }

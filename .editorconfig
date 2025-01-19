@@ -1,18 +1,40 @@
+# editorconfig.org
 root = true
 
 [*]
-charset = utf-8
-end_of_line = lf
-indent_size = 4
 indent_style = space
-insert_final_newline = true
+indent_size = 4
+end_of_line = lf
+charset = utf-8
 trim_trailing_whitespace = true
+insert_final_newline = true
 
-[*.md]
-trim_trailing_whitespace = false
+[*.php]
+tab_width = 4
+indent_size = 4
+
+[*.html]
+tab_width = 4
+indent_size = 4
+
+[*.xml]
+tab_width = 4
+indent_size = 4
+
+[*.json]
+tab_width = 4
+indent_size = 4
 
 [*.{yml,yaml}]
 indent_size = 2
 
 [docker-compose.yml]
 indent_size = 4
+
+[Makefile]
+indent_style = tab
+tab_width = 4
+indent_size = 4
+
+[*.md]
+trim_trailing_whitespace = false

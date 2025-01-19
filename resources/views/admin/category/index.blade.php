@@ -3,7 +3,6 @@
 @section('title', 'Categories')
 
 @section('content')
-    <main class="app-main"> <!--begin::App Content Header-->
             <div class="app-content-header"> <!--begin::Container-->
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
@@ -26,7 +25,7 @@
             <div class="app-content"> <!--begin::Container-->
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row"> <!--begin::Col-->
-                        
+
                         <div class="col-md-12">
                         <div class="card mb-4">
                                 <div class="card-header">
@@ -46,12 +45,17 @@
                                             <tr class="align-middle">
                                                 <td>{{ $category->id }}</td>
                                                 <td>{{ $category->title }}</td>
-                                                <td>
+                                                <td class="d-flex gap-2">
                                                     <a href="{{ route('admin.categories.edit', ['category'  => $category->id ]) }}" class="btn btn-info"><i class="bi bi-pencil"></i></a>
-                                                    <a href="{{ route('admin.categories.destroy', ['category'  => $category->id ]) }}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                                    <form action="{{ route('admin.categories.destroy', ['category'  => $category->id ]) }}" method="post">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button class="btn btn-danger" onclick="return confirm('Are you sure to want delete category [{{ $category->title }}]?')"><i class="bi bi-trash"></i></button>
+                                                    </form>
+
                                                 </td>
                                             </tr>
-                                        @endforeach    
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div> <!-- /.card-body -->
@@ -68,8 +72,7 @@
                             </div>
                         </div>
 
-                    </div> <!--end::Row--> 
+                    </div> <!--end::Row-->
                 </div> <!--end::Container-->
             </div> <!--end::App Content-->
-        </main>
 @endsection
