@@ -15,7 +15,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/adminlte.css') }}"><!--end::Required Plugin(AdminLTE)--><!-- apexcharts -->
 
-    
+    <style>
+        .cke_notifications_area {
+            display: none;
+        }
+        label.required::before {
+            content: "* ";
+            color: #9c3328;
+            font-weight: bold;
+        }
+    </style>
+
 </head> <!--end::Head--> <!--begin::Body-->
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
@@ -44,8 +54,8 @@
                                 </div> <!--end::Message-->
                             </a>
                             <div class="dropdown-divider"></div> <a href="#" class="dropdown-item"> <!--begin::Message-->
-                                <div class="d-flex"> 
-                                
+                                <div class="d-flex">
+
                                     <div class="flex-shrink-0"> <img src="{{ $admin_assets_img }}/user8-128x128.jpg" alt="User Avatar" class="img-size-50 rounded-circle me-3"> </div>
                                     <div class="flex-grow-1">
                                         <h3 class="dropdown-item-title">
@@ -116,19 +126,29 @@
                 <nav class="mt-2"> <!--begin::Sidebar Menu-->
                     <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
 
-                        <li class="nav-item"> <a href="{{ route('admin.main.index') }}" class="nav-link"> <i class="nav-icon bi bi-speedometer"></i>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.main.index') }}" class="nav-link"> <i class="nav-icon bi bi-speedometer"></i>
                                 <p>Dashboard</p>
-                            </a> </li>
+                            </a>
+                        </li>
 
-                        <li class="nav-item"> <a href="{{ route('admin.categories.index') }}" class="nav-link"> <i class="nav-icon bi bi-speedometer"></i>
-                            <p>Categories</p>
-                        </a> </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.categories.index') }}" class="nav-link"> <i class="nav-icon bi bi-card-list"></i>
+                                <p>Categories</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.posts.index') }}" class="nav-link"> <i class="nav-icon bi bi-pencil-square"></i>
+                                <p>Posts</p>
+                            </a>
+                        </li>
                     </ul> <!--end::Sidebar Menu-->
                 </nav>
             </div> <!--end::Sidebar Wrapper-->
-        </aside> <!--end::Sidebar--> 
-        
-        
+        </aside> <!--end::Sidebar-->
+
+
         <main class="app-main">
             @if ($errors->any())
                 <div class="app-content mt-3">
@@ -145,7 +165,7 @@
                             </div>
                         </div>
                     </div>
-                <div>
+                </div>
             @endif
 
             @if (session()->has('error'))
@@ -177,11 +197,11 @@
             @endif
             <!--begin::App Main-->
             @yield('content')
-            <!--end::App Main--> 
+            <!--end::App Main-->
         </main>
-        
-       
-        
+
+
+
         <!--begin::Footer-->
         <footer class="app-footer"> <!--begin::To the end-->
             <div class="float-end d-none d-sm-inline">Anything you want</div> <!--end::To the end--> <!--begin::Copyright--> <strong>
@@ -198,8 +218,8 @@
     <script src="{{ asset('assets/admin/js/adminlte.js') }}"></script> <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script src="{{ asset('assets/admin/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> 
-    
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/admin/ckeditor/ckeditor.js') }}"></script>
 </body><!--end::Body-->
 
 </html>
