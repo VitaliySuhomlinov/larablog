@@ -219,7 +219,7 @@
     <script src="{{ asset('assets/admin/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
-    <script src="{{ asset('assets/admin/ckeditor/ckeditor.js') }}"></script>
+{{--    <script src="{{ asset('assets/admin/ckeditor/ckeditor.js') }}"></script>--}}
 </body><!--end::Body-->
 
 </html>
